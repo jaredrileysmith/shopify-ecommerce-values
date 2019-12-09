@@ -14,6 +14,7 @@ ___INFO___
   "version": 1,
   "securityGroups": [],
   "displayName": "Shopify Ecommerce Values",
+  "categories": ["ANALYTICS", "CONVERSIONS", "SALES"],
   "description": "Variable returns the specified value from the global Shopify object",
   "containerContexts": [
     "WEB"

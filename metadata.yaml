@@ -16,8 +16,10 @@ homepage: "https://www.wpromote.com"
 documentation: "https://github.com/jaredrileysmith/shopify-ecommerce-values/blob/master/README.md"
 versions:
 # Latest Version
+- sha: e6e7c5ecb8b0cb751e77905f44909074e4eff7d2
+  changeNotes: Updated display name and README to reflect Shopify Plus requirement
+# Previous Versions
 - sha: bee97459ad29ae9f02190b92ec95f99b4b832d6d
   changeNotes: Added checkbox to return value as number and added documentation to README
-# Previous Versions
 - sha: 9efc59c3caa8d94e792fd52394331d556f181bbe
   changeNotes: Initial Version

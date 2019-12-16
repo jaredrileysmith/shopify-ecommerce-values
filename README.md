@@ -3,6 +3,7 @@ This repository is for a variable template for the Google Tag Manager Community 
 
 # Option to Return Value as a Number
 All currency values in the Shopify global object are recorded as strings.  This template includes an option (e.g. a checkbox) to return the value as a number for instances where the value needs to be a number (like Google Ads Conversion tags, etc.)
+
 ![image](https://user-images.githubusercontent.com/26010307/70926278-72fdbe00-1ff2-11ea-84fe-a0b84d196454.png)
 
 

@@ -5,7 +5,7 @@ ___INFO___
   "id": "cvt_temp_public_id",
   "version": 1,
   "securityGroups": [],
-  "displayName": "Shopify Ecommerce Values",
+  "displayName": "Shopify Plus Ecommerce Values",
   "categories": [
     "ANALYTICS",
     "CONVERSIONS",

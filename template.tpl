@@ -1,11 +1,3 @@
-___TERMS_OF_SERVICE___
-
-By creating or modifying this file you agree to Google Tag Manager's Community
-Template Gallery Developer Terms of Service available at
-https://developers.google.com/tag-manager/gallery-tos (or such other URL as
-Google may provide), as modified from time to time.
-
-
 ___INFO___
 
 {
@@ -14,7 +6,11 @@ ___INFO___
   "version": 1,
   "securityGroups": [],
   "displayName": "Shopify Ecommerce Values",
-  "categories": ["ANALYTICS", "CONVERSIONS", "SALES"],
+  "categories": [
+    "ANALYTICS",
+    "CONVERSIONS",
+    "SALES"
+  ],
   "description": "Variable returns the specified value from the global Shopify object",
   "containerContexts": [
     "WEB"
@@ -31,8 +27,8 @@ ___TEMPLATE_PARAMETERS___
     "displayName": "Desired Value",
     "selectItems": [
       {
-        "value": "currency",
-        "displayValue": "Currency"
+        "value": "customer_id",
+        "displayValue": "Customer ID"
       },
       {
         "value": "discount",
@@ -66,6 +62,14 @@ ___TEMPLATE_PARAMETERS___
       }
     ],
     "alwaysInSummary": false
+  },
+  {
+    "type": "CHECKBOX",
+    "name": "checkbox1",
+    "checkboxText": "Make Number?",
+    "simpleValueType": true,
+    "help": "If checked, the value returned will be a number and not a string",
+    "alwaysInSummary": true
   }
 ]
 
@@ -75,14 +79,16 @@ ___SANDBOXED_JS_FOR_WEB_TEMPLATE___
 // Require necessary APIs & define const for user selection
 const copyFromWindow = require('copyFromWindow');
 const log = require('logToConsole');
-const hash = require('sha256');
+const makeNumber = require('makeNumber');
 let selection = data.dropDownMenu1;
+let value;
 
 // Copy Shopify object from window
 const shopify = copyFromWindow('Shopify');
 
 // Declare value (to return) and set it equal to selection 
-let value = shopify.checkout[selection];
+data.checkbox1 === true ? value = makeNumber(shopify.checkout[selection]) : value = shopify.checkout[selection];
+log(value);
 
 // Return appropriate value, according to user selection
 return value;
@@ -181,4 +187,3 @@ scenarios: []
 ___NOTES___
 
 Created on 12/9/2019, 12:03:08 PM
-

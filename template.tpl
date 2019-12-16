@@ -1,3 +1,11 @@
+___TERMS_OF_SERVICE___
+
+By creating or modifying this file you agree to Google Tag Manager's Community
+Template Gallery Developer Terms of Service available at
+https://developers.google.com/tag-manager/gallery-tos (or such other URL as
+Google may provide), as modified from time to time.
+
+
 ___INFO___
 
 {
@@ -26,10 +34,6 @@ ___TEMPLATE_PARAMETERS___
     "name": "dropDownMenu1",
     "displayName": "Desired Value",
     "selectItems": [
-      {
-        "value": "customer_id",
-        "displayValue": "Customer ID"
-      },
       {
         "value": "discount",
         "displayValue": "Discount"
@@ -64,12 +68,27 @@ ___TEMPLATE_PARAMETERS___
     "alwaysInSummary": false
   },
   {
-    "type": "CHECKBOX",
-    "name": "checkbox1",
-    "checkboxText": "Make Number?",
+    "type": "RADIO",
+    "name": "radioButtonGroup1",
+    "displayName": "Format value as",
+    "radioItems": [
+      {
+        "value": "string",
+        "displayValue": "String"
+      },
+      {
+        "value": "number",
+        "displayValue": "Number"
+      }
+    ],
     "simpleValueType": true,
-    "help": "If checked, the value returned will be a number and not a string",
-    "alwaysInSummary": true
+    "help": "Select if you want the value returned as a number or a string",
+    "valueValidators": [
+      {
+        "type": "NON_EMPTY"
+      }
+    ],
+    "defaultValue": "string"
   }
 ]
 
@@ -80,6 +99,7 @@ ___SANDBOXED_JS_FOR_WEB_TEMPLATE___
 const copyFromWindow = require('copyFromWindow');
 const log = require('logToConsole');
 const makeNumber = require('makeNumber');
+const makeString = require('makeString');
 let selection = data.dropDownMenu1;
 let value;
 
@@ -87,10 +107,11 @@ let value;
 const shopify = copyFromWindow('Shopify');
 
 // Declare value (to return) and set it equal to selection 
-data.checkbox1 === true ? value = makeNumber(shopify.checkout[selection]) : value = shopify.checkout[selection];
+data.radioButtonGroup1 === 'string' ? value = makeString(shopify.checkout[selection]) : value = makeNumber(shopify.checkout[selection]);
 log(value);
 
-// Return appropriate value, according to user selection
+
+// Return appropriate value, according to user selection.  Return undefined if not available
 return value;
 
 

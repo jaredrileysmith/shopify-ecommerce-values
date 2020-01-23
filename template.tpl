@@ -57,6 +57,38 @@ ___TEMPLATE_PARAMETERS___
       {
         "value": "total_tax",
         "displayValue": "Total Tax"
+      },
+      {
+        "value": "email",
+        "displayValue": "Email"
+      },
+      {
+        "value": "customer_id",
+        "displayValue": "Customer ID"
+      },
+      {
+        "value": "first_name",
+        "displayValue": "First Name"
+      },
+      {
+        "value": "last_name",
+        "displayValue": "Last Name"
+      },
+      {
+        "value": "city",
+        "displayValue": "City"
+      },
+      {
+        "value": "country_code",
+        "displayValue": "Country"
+      },
+      {
+        "value": "province_code",
+        "displayValue": "State"
+      },
+      {
+        "value": "zip",
+        "displayValue": "Zip Code"
       }
     ],
     "simpleValueType": true,
@@ -106,8 +138,14 @@ let value;
 // Copy Shopify object from window
 const shopify = copyFromWindow('Shopify');
 
-// Declare value (to return) and set it equal to selection 
-data.radioButtonGroup1 === 'string' ? value = makeString(shopify.checkout[selection]) : value = makeNumber(shopify.checkout[selection]);
+// Determine if selection is for a value in billing_address object, if not pull directly from .checkout
+if(['first_name', 'last_name', 'city', 'province_code', 'country_code', 'zip'].indexOf(selection) >= 0){
+  value = shopify.checkout.billing_address[selection];
+} else {
+  value = shopify.checkout[selection];
+}
+// Set value to string or number according to user selection
+data.radioButtonGroup1 === 'string' ? value = makeString(value).toLowerCase() : value = makeNumber(value);
 log(value);
 
 

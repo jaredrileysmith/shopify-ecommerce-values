@@ -16,9 +16,11 @@ homepage: "https://www.wpromote.com"
 documentation: "https://github.com/jaredrileysmith/shopify-ecommerce-values/blob/master/README.md"
 versions:
 # Latest Version
+- sha: 349fce35a229d258ac8d0f35021e25a53dee27c2
+  changeNotes: Added additional data points to choose from in dropdown
+# Previous Versions
 - sha: 1e268c1a8e8bd39b09cabbb56145b1b3ec2ffef8
   changeNotes: Added radio buttons for return type and updated README accordingly
-# Previous Versions
 - sha: e6e7c5ecb8b0cb751e77905f44909074e4eff7d2
   changeNotes: Updated display name and README to reflect Shopify Plus requirement
 - sha: bee97459ad29ae9f02190b92ec95f99b4b832d6d
